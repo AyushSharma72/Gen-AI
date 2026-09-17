@@ -1,0 +1,16 @@
+{
+    "name": null,
+    "input_variables": [
+        "tone",
+        "user_input"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "\nDescribe the following topic in no more than 6 lines.\n\nTopic: \"{user_input}\"\n\nRules:\n- Keep the explanation simple and easy to understand.\n- Include at least one example.\n- Keep the overall tone {tone}.\n- Do not exceed 6 lines.\n",
+    "template_format": "f-string",
+    "validate_template": true,
+    "_type": "prompt"
+}

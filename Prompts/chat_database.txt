@@ -1,0 +1,4 @@
+HumanMessage("content":"hi my name is Ayush sharma")
+AIMessage("content":"how can i help you")
+HumanMessage("content":"i worked hard but still I am not where others who worked 10 percent of me are")
+AIMessage:("content":"that was bad to hear but don't worry things will come on track slowly")
