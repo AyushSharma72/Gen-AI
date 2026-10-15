@@ -19,9 +19,7 @@ chat_model = ChatHuggingFace(llm=llm)
 # ---------------- Sentiment Schema ----------------
 
 class ReviewSentiment(BaseModel):
-    sentiment: Literal["positive", "negative", "neutral"] = Field(
-        description="The sentiment of the review."
-    )
+    sentiment: Literal["positive", "negative", "neutral"] = Field(description="The sentiment of the review.")
 
 
 sentiment_parser = PydanticOutputParser(pydantic_object=ReviewSentiment)
@@ -30,15 +28,8 @@ sentiment_parser = PydanticOutputParser(pydantic_object=ReviewSentiment)
 # ---------------- Classification Chain ----------------
 
 sentiment_classification_prompt = PromptTemplate(
-    template="""
-Based on the review below, classify the sentiment as only one of these:
-positive, negative, or neutral.
-
-Review: {Review}
-
-{format_instructions}
-""",
-    input_variables=["Review"],
+    template="""Based on the review below, classify the sentiment as only one of these: positive, negative, or neutral.
+    Review: {Review} {format_instructions}""", input_variables=["Review"],
     partial_variables={
         "format_instructions": sentiment_parser.get_format_instructions()
     }
@@ -74,7 +65,7 @@ positive_response_chain = positive_response_prompt | chat_model
 negative_response_chain = negative_response_prompt | chat_model
 neutral_response_chain = neutral_response_prompt | chat_model
 
-review = "What a classic phone it is. I really like it. Thanks for the service OnePlus"
+review = "What a bad phone it is. I really don't like it. Thanks for the service OnePlus 😔"
 
 sentiment = sentiment_classifier_chain.invoke({
     "Review": review
